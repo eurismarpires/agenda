@@ -21,7 +21,7 @@ public class Endereco implements Serializable {
     @Column(name = "idEndereco")
     private Long id;
 
-    @Column(length = 250)
+    @Column(length = 250,nullable = false)
     private String endereco;
     
     @Column(length = 10)
@@ -30,13 +30,13 @@ public class Endereco implements Serializable {
     @Column(length = 50)
     private String complemento;
     
-    @Column(length = 100)
+    @Column(length = 100,nullable = false)
     private String bairro;
     
-    @Column(length = 100)
+    @Column(length = 100,nullable = false)
     private String cidade;
     
-    @Column(length = 2)
+    @Column(length = 2,nullable = false)
     private String uf;
     
     @Column(length = 10)

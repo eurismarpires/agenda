@@ -44,9 +44,9 @@ public class UsuarioTest {
     public void tearDown() {
     }
 
-    //@Test
+    @Test
     public void TestPersistUsuario() {
-        Usuario usuario = new Usuario();
+       Usuario usuario = new Usuario();
         usuario.setLogin("eurismarpires");
         usuario.setNome("Eurismar Pires Borges");
         usuario.setSenha("123");        

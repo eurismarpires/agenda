@@ -2,6 +2,7 @@ package com.eurismar.agenda.dominio;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,19 +16,19 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Usuario implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idUsuario")
     private Long id;
 
-    @Column(length = 50)
+    @Column(length = 50,nullable = false)
     private String Nome;
     
-    @Column(length = 20)
+    @Column(length = 20,nullable = false)
     private String Login;
     
-    @Column(length = 10)
+    @Column(length = 10,nullable = false)
     private String Senha;
     
     @OneToMany(mappedBy = "usuario")
@@ -75,18 +76,25 @@ public class Usuario implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 5;
+        hash = 17 * hash + Objects.hashCode(this.id);
+        hash = 17 * hash + Objects.hashCode(this.Login);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof Usuario)) {
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        Usuario other = (Usuario) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.Login, other.Login)) {
             return false;
         }
         return true;
@@ -94,7 +102,8 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "com.eurismar.agenda.dominio.Contato[ id=" + id + " ]";
+        return "Usuario{" + "id=" + id + ", Nome=" + Nome + ", Login=" + Login + ", Senha=" + Senha + ", contatos=" + contatos + '}';
     }
-    
+
+
 }

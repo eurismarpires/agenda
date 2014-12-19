@@ -26,7 +26,7 @@ public class Contato implements Serializable {
     @Column(name = "idContato")
     private Long id;
     
-    @Column(length = 60)
+    @Column(length = 60,nullable = false)
     private String nome;
     
     @Column(length = 30)
@@ -45,11 +45,6 @@ public class Contato implements Serializable {
     @OneToMany(mappedBy = "contato")
     private List<MeioContato> meiosContatos;
     
-    @OneToMany(mappedBy = "contato")
-    private List<Contato> contatos;
-    public Long getId() {
-        return id;
-    }
    
     public void setId(Long id) {
         this.id = id;
@@ -101,14 +96,6 @@ public class Contato implements Serializable {
 
     public void setMeiosContatos(List<MeioContato> meiosContatos) {
         this.meiosContatos = meiosContatos;
-    }
-
-    public List<Contato> getContatos() {
-        return contatos;
-    }
-
-    public void setContatos(List<Contato> contatos) {
-        this.contatos = contatos;
     }
     
 

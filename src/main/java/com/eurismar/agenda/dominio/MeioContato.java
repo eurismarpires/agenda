@@ -21,14 +21,14 @@ public class MeioContato implements Serializable {
     @Column(name = "idMeioContato")
     private Long id;
 
-    @Column(length = 15)    
+    @Column(length = 15,nullable = false)    
     private String tipoContato;
     
-    @Column(length = 250)
+    @Column(length = 250,nullable = false)
     private String conteudo;
     
     @ManyToOne
-    @JoinColumn(name = "idContato",referencedColumnName = "idContato")    
+    @JoinColumn(name = "idContato",referencedColumnName = "idContato",nullable = false)    
     private Contato contato;
     public Long getId() {
         return id;
